@@ -6,8 +6,6 @@ import {
     Collapse
 } from 'react-bootstrap';
 
-import {useState} from 'react';
-
 import API, { graphqlOperation } from '@aws-amplify/api';
 
 const listTodos = `query listTodos {
@@ -33,8 +31,6 @@ const listTodos = `query listTodos {
 
 export default function Users() {
 
-    const [open, setOpen] = useState(false);
-
     const todoMutation = async () => {
         const todoDetails = {
             name: 'Party tonight!',
@@ -55,20 +51,6 @@ export default function Users() {
         <Container fluid>
             <Row>
                 <Col>
-                    <Button
-                    onClick={() => setOpen(!open)}
-                    aria-controls="example-collapse-text"
-                    aria-expanded={open}
-                    >
-                    click
-                    </Button>
-                    <Collapse in={open}>
-                    <div id="example-collapse-text">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                        terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-                        labore wes anderson cred nesciunt sapiente ea proident.
-                    </div>
-                    </Collapse>
                     <Button onClick={() => todoMutation()}>
                         Push
                     </Button>

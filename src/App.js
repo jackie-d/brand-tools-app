@@ -44,10 +44,10 @@ export default function App() {
                     Home
                   </Nav.Link>
                   <Nav.Link as={Link} to="/about">
-                    About
+                    Design
                   </Nav.Link>
                   <Nav.Link as={Link} to="/users">
-                    Users
+                    Database (GraphQL + Redux)
                   </Nav.Link>
                   <Nav.Link as={Link} to="/redux">
                     Redux
