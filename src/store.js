@@ -37,6 +37,16 @@ function appReducer(state = initialState, action) {
           todos: newTodos
         }
       }
+      case 'getTodos': {
+        return Object.assing({}, ...state);
+      }
+      case 'reloadTodos': {
+        const newState = {todos: []};
+        if ( action.todos ) {
+          newState.todos = action.todos;
+        }
+        return newState;
+      }
       default:
         return state
     }

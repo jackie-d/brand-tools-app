@@ -3,7 +3,6 @@ import React from "react";
 import About from './pages/About';
 import Home from './pages/Home';
 import Users from './pages/Users';
-import Redux from './pages/Redux';
 
 import {
   BrowserRouter as Router,
