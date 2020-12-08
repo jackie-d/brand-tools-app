@@ -49,9 +49,6 @@ export default function App() {
                   <Nav.Link as={Link} to="/users">
                     Database (GraphQL + Redux)
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/redux">
-                    Redux
-                  </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
@@ -63,9 +60,6 @@ export default function App() {
                 </Route>
                 <Route path="/users">
                   <Users />
-                </Route>
-                <Route path="/redux">
-                  <Redux />
                 </Route>
                 <Route path="/">
                   <Home />
