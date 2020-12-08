@@ -9,27 +9,22 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 10s linear;
   }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+  color: black;
+  text-align: center;
 }
 
 .Cool-button {
-  border-style: inset;
+  border-style: outset;
   background-color: #61dafb;
   color: white;
   border-color: #80f0ff;
@@ -53,10 +48,8 @@
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+  33%   { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+  66% { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+  100%   { transform: rotate(-360deg) translateX(30px) rotate(360deg); }
 }
