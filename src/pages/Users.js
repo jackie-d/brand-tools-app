@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux'
 
+import { CloudArrowDownFill, CloudArrowUpFill, ExclamationDiamond, Trash } from 'react-bootstrap-icons';
+
 import {
     Container,
     Row,
@@ -9,7 +11,8 @@ import {
     Button,
     Collapse,
     Table,
-    Card
+    Card,
+    Modal
 } from 'react-bootstrap';
 
 import API, { graphqlOperation } from '@aws-amplify/api';
@@ -54,6 +57,16 @@ export default function Users() {
   const [text, setText] = useState();
   const [description, setDescription] = useState();
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const reloadAndClose = () => {
+    handleClose();
+    listQuery();
+  }
+
   const setTodoText = (e) => {
     setText(e.target.value);
   }
@@ -63,6 +76,9 @@ export default function Users() {
   }
 
   const addTask = () => {
+    if ( !text || text == '' ) {
+      return;
+    }
     dispatch({ type: 'addTodo', todo: {title: text, description: description} });
     setText('')
     setDescription('')
@@ -102,6 +118,7 @@ export default function Users() {
   };
 
   const listQuery = async () => {
+
       console.log('listing todos');
       const allTodos = await API.graphql(graphqlOperation(listTodos));
       if ( allTodos && allTodos.data && allTodos.data.listTodos && allTodos.data.listTodos.items ) {
@@ -116,10 +133,12 @@ export default function Users() {
                   <Card className={'mt-2 mb-2'}>
                     <Card.Body className={'m-2'}>
                       <Button onClick={() => todoMutation()} className={'mr-2'}>
-                          Save on cloud
+                          <CloudArrowUpFill />
+                          &nbsp; Save
                       </Button>
-                      <Button onClick={() => listQuery()}>
-                          Re-load
+                      <Button onClick={() => handleShow()}>
+                          <CloudArrowDownFill />
+                          &nbsp; Reload
                       </Button>
                     </Card.Body>
                   </Card>
@@ -147,7 +166,7 @@ export default function Users() {
                           <td>1</td>
                           <td>{todo.title}</td>
                           <td>{todo.description}</td>
-                          <td><button class="btn btn-secondary btn-small" onClick={() => deleteTodo(todo.id)}>X</button></td>
+                          <td><button class="btn btn-secondary btn-small" onClick={() => deleteTodo(todo.id)}><Trash /></button></td>
                         </tr>
                     ))}
                     </tbody>
@@ -155,6 +174,25 @@ export default function Users() {
 
               </Col>
           </Row>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                <ExclamationDiamond /> &nbsp;
+                Overwrite local data?
+              </Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <p>Be sure to save your data to the cloud before a reload. Do you want to continue and reload the data from the cloud?</p>
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>No, cancel</Button>
+              <Button variant="primary" onClick={reloadAndClose}>Yes, reload</Button>
+            </Modal.Footer>
+          </Modal>
+
       </Container>
   );
 } 

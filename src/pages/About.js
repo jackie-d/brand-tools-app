@@ -69,7 +69,7 @@ function About(){
                         <Form>
                             <Form.Group controlId="formBasicRange">
                                 <Form.Label>Range</Form.Label>
-                                <Form.Control type="range" onChange={(e) => setProgress(e.target.value)} />
+                                <Form.Control type="range" value={progress} onChange={(e) => setProgress(e.target.value)} />
                             </Form.Group>
                         </Form>
                     </Card.Body>
@@ -132,7 +132,7 @@ function About(){
                                 Look at some advanced data interaction on the next page!
                             </p>
                             <p>
-                                <Link to="/redux">
+                                <Link to="/users">
                                     <Button type="button" variant="primary">GraphQL + Redux</Button>
                                 </Link>
                             </p>
