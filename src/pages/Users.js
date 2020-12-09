@@ -95,7 +95,6 @@ export default function Users() {
         for ( let item of allTodos.data.listTodos.items ) {
           try{
             const deleteTodo = await API.graphql(graphqlOperation(deleteTodoDb, {id: item.id}));
-            console.log('delete', deleteTodo);
           }catch(error) {
             console.error('delete', error);
           }
@@ -108,9 +107,9 @@ export default function Users() {
             name: todo.title,
             description: todo.description
         };
+        console.log('create -', todo, todoDetails);
         try{
           const newTodo = await API.graphql(graphqlOperation(addTodo, todoDetails));
-          console.log('create', newTodo);
         }catch(error) {
           console.error('create', error);
         }
@@ -164,7 +163,7 @@ export default function Users() {
                     {todos.map((todo, index) => (
                         <tr key={index}>
                           <td>1</td>
-                          <td>{todo.title}</td>
+                          <td>{todo.title || todo.name}</td>
                           <td>{todo.description}</td>
                           <td><button class="btn btn-secondary btn-small" onClick={() => deleteTodo(todo.id)}><Trash /></button></td>
                         </tr>

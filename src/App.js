@@ -32,7 +32,7 @@ export default function App() {
   return (
     <Router>
       <Container fluid style={{height: '100vh'}}>
-        <Row style={{height: '100vh', 'background-color': '#eeeeee'}}>
+        <Row style={{height: '100vh', 'backgroundColor': '#eeeeee'}}>
           <Col xs={12} style={{'alignSelf': 'start'}}>
             <Navbar bg="light" expand="lg" style={{margin: '0 -15px'}}>
               <Navbar.Brand href="#home">Jackie D</Navbar.Brand>

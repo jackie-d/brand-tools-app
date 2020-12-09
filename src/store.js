@@ -43,7 +43,10 @@ function appReducer(state = initialState, action) {
       case 'reloadTodos': {
         const newState = {todos: []};
         if ( action.todos ) {
-          newState.todos = action.todos;
+          newState.todos = action.todos.map(todo => {
+            todo.title = todo.name;
+            return todo;
+          });
         }
         return newState;
       }
