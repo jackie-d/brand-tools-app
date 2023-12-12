@@ -32,15 +32,15 @@ function Home() {
         <div className="App-header"></div>
           <img src={logo} className="App-logo mb-2" alt="logo" />
           <p>
-            Wellcome in <span style={{color: 'yellow'}}>Jackie D</span> React App demo
+            Welcome in <span style={{color: 'yellow'}}>Jackie D</span> React App demo
           </p>
           <p>
           <a
-            href="https://www.jackiedeglinnocenti.com"
+            href="https://github.com/jackie-d"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Have a look at my website profile
+            Have a look at my profile on GitHub
           </a>
           <br />
           <a
@@ -48,17 +48,17 @@ function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Have a look at my LinkedIn profile
+            Have a look at my LinkedIn
           </a>
           </p>
-          <p>Or search me on the web: <pre>jackie-d</pre></p>
+          <p>In 2020 you would have found me on the web: <pre>jackie-d</pre></p>
 
           <Card>
             <Card.Body>
-              <div className={'form-inline'}>
+              <div className={'form-inline'} style={{'justify-content': 'center'}}>
                 <div className={'form-group mb-2'}>
                   <input
-                    className={'form-control'}
+                    className={'form-control input-bolder'}
                     type="text"
                     onChange={(e) => updateWord(e)}
                     placeholder={"Write something"}
@@ -66,6 +66,7 @@ function Home() {
                 </div>
                 <button 
                   className={'btn btn-primary mb-2 ml-2'}
+                  data-testid="bold-button"
                   onClick={() => handleClick()}
                   // disabled={!buttonEnabled}
                 >
