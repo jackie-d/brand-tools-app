@@ -55,7 +55,8 @@
 }
 
 .carousel-caption{
-
+  display: block;
+  background-color: #ffffff99;
 }
 
 .carousel-caption h3{

@@ -28,6 +28,11 @@ function About(){
 
     const [open, setOpen] = useState(false);
     const [progress, setProgress] = useState(32);
+    const [isSpinnerShown, setSpinnerShown] = useState(true);
+
+    const toggleSpinner = () => {
+        setSpinnerShown(!isSpinnerShown);
+    }
 
     const popover = (
         <Popover id="popover-basic">
@@ -51,7 +56,7 @@ function About(){
                         aria-expanded={open}
                         className={'mb-2'}
                         >
-                            Show Animated Text
+                            Animated Show Text
                         </Button>
                         <Collapse in={open}>
                         <div id="example-collapse-text">
@@ -92,7 +97,7 @@ function About(){
                             <img
                             className="d-block w-100"
                             src={squareImg}
-                            alt="Third slide"
+                            alt="Second slide"
                             />
 
                             <Carousel.Caption>
@@ -117,11 +122,15 @@ function About(){
                 <Card className={'mb-2'}>
                     <Card.Body className={'m-2'}>
                         <OverlayTrigger trigger="click" placement="top" overlay={popover}>
-                            <Button variant="success">Waiting for your click</Button>
+                            <Button variant="success" onClick={toggleSpinner}>Waiting for your click</Button>
                         </OverlayTrigger>
+                        { (isSpinnerShown) ? 
                         <Spinner animation="border" role="status" className={'ml-2'} style={{'position':'relative', 'top': '8px'}}>
                             <span className="sr-only">Loading...</span>
                         </Spinner>
+                        :
+                        <></>
+                        }
                     </Card.Body>
                 </Card>
                 <Card className={'mb-2'}>
@@ -133,7 +142,7 @@ function About(){
                             </p>
                             <p>
                                 <Link to="/users">
-                                    <Button type="button" variant="primary">GraphQL + Redux</Button>
+                                    <Button type="button" variant="primary">Database</Button>
                                 </Link>
                             </p>
                         </Jumbotron>

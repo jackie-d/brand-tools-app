@@ -15,7 +15,7 @@ import {
     Modal
 } from 'react-bootstrap';
 
-import API, { graphqlOperation } from '@aws-amplify/api';
+// import API, { graphqlOperation } from '@aws-amplify/api';
 
 const listTodos = `query listTodos {
     listTodos{
@@ -90,46 +90,46 @@ export default function Users() {
 
   const todoMutation = async () => {
       // delete all previous
-      const allTodos = await API.graphql(graphqlOperation(listTodos));
-      if ( allTodos && allTodos.data && allTodos.data.listTodos && allTodos.data.listTodos.items ) {
-        for ( let item of allTodos.data.listTodos.items ) {
-          try{
-            const deleteTodo = await API.graphql(graphqlOperation(deleteTodoDb, {id: item.id}));
-          }catch(error) {
-            console.error('delete', error);
-          }
-        }
-      }
-      // save new ones
-      for ( let todo of todos ) {
-        const todoDetails = {
-            id: todo.id,
-            name: todo.title,
-            description: todo.description
-        };
-        console.log('create -', todo, todoDetails);
-        try{
-          const newTodo = await API.graphql(graphqlOperation(addTodo, todoDetails));
-        }catch(error) {
-          console.error('create', error);
-        }
-      }
+      // const allTodos = await API.graphql(graphqlOperation(listTodos));
+      // if ( allTodos && allTodos.data && allTodos.data.listTodos && allTodos.data.listTodos.items ) {
+      //   for ( let item of allTodos.data.listTodos.items ) {
+      //     try{
+      //       const deleteTodo = await API.graphql(graphqlOperation(deleteTodoDb, {id: item.id}));
+      //     }catch(error) {
+      //       console.error('delete', error);
+      //     }
+      //   }
+      // }
+      // // save new ones
+      // for ( let todo of todos ) {
+      //   const todoDetails = {
+      //       id: todo.id,
+      //       name: todo.title,
+      //       description: todo.description
+      //   };
+      //   console.log('create -', todo, todoDetails);
+      //   try{
+      //     const newTodo = await API.graphql(graphqlOperation(addTodo, todoDetails));
+      //   }catch(error) {
+      //     console.error('create', error);
+      //   }
+      // }
   };
 
   const listQuery = async () => {
 
       console.log('listing todos');
-      const allTodos = await API.graphql(graphqlOperation(listTodos));
-      if ( allTodos && allTodos.data && allTodos.data.listTodos && allTodos.data.listTodos.items ) {
-        dispatch({ type: 'reloadTodos', todos: allTodos.data.listTodos.items });
-      }
+      // const allTodos = await API.graphql(graphqlOperation(listTodos));
+      // if ( allTodos && allTodos.data && allTodos.data.listTodos && allTodos.data.listTodos.items ) {
+      //   dispatch({ type: 'reloadTodos', todos: allTodos.data.listTodos.items });
+      // }
   };
 
   return (
       <Container fluid>
           <Row>
               <Col>
-                  <Card className={'mt-2 mb-2'}>
+                  {/* <Card className={'mt-2 mb-2'}>
                     <Card.Body className={'m-2'}>
                       <Button onClick={() => todoMutation()} className={'mr-2'}>
                           <CloudArrowUpFill />
@@ -140,7 +140,7 @@ export default function Users() {
                           &nbsp; Reload
                       </Button>
                     </Card.Body>
-                  </Card>
+                  </Card> */}
 
                   <Card className={'mb-2'}>
                     <Card.Body className={'m-2'}>

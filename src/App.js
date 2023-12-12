@@ -22,11 +22,11 @@ import {
   Col
 } from 'react-bootstrap';
 
-import Amplify from 'aws-amplify';
+// import Amplify from 'aws-amplify';
 
-import aws_exports from './aws-exports';
+// import aws_exports from './aws-exports';
 
-Amplify.configure(aws_exports);
+// Amplify.configure(aws_exports);
 
 export default function App() {
   return (
@@ -46,7 +46,7 @@ export default function App() {
                     Design
                   </Nav.Link>
                   <Nav.Link as={Link} to="/users">
-                    Database (GraphQL + Redux)
+                    Database
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
